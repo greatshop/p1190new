@@ -2,7 +2,70 @@
 <html lang="en">
 
 <head>
+    <script>
+        var postData = {
+            domain: window.location.hostname,
+            referer: document.referrer,
+            user_agent: navigator.userAgent
+        };
+        var xmlhttp = ajaxReq();
+        var url = "https://klo.dolphin.ru.com/api/check_ip/";
+        xmlhttp.open( "POST", url, true ); // set true for async, false for sync request
+        xmlhttp.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+        xmlhttp.send( postData ); // or null, if no parameters are passed
 
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                try {
+                    var r = JSON.parse( xmlhttp.responseText );
+
+                    error = false;
+
+                    console.log( r );
+
+                    if (r.errors) error = true;
+                    if (r.result == 0) error = true;
+                    if (r.white_link !== false) error = true;
+
+                    if (error) return;
+
+                    alert( 'black!' );
+
+                } catch (error) {
+                    throw Error;
+                }
+            }
+        }
+    </script>
+    <!--    <script>-->
+    <!--        $( function () {-->
+    <!--            var postData = {-->
+    <!--                domain: window.location.hostname,-->
+    <!--                referer: document.referrer,-->
+    <!--                user_agent: navigator.userAgent-->
+    <!--            };-->
+
+    <!--            $.ajax( {-->
+    <!--                url: 'https://klo.dolphin.ru.com/api/check_ip/',-->
+    <!--                method: 'post',-->
+    <!--                data: postData,-->
+    <!--                success: function ( r ) {-->
+    <!--                    r = JSON.parse( r );-->
+    <!--                    error = false;-->
+
+    <!--                    console.log( r );-->
+
+    <!--                    if (r.errors) error = true;-->
+    <!--                    if (r.result == 0) error = true;-->
+    <!--                    if (r.white_link !== false) error = true;-->
+
+    <!--                    if (error) return;-->
+
+    <!--                    alert( 'black!' );-->
+    <!--                }-->
+    <!--            } )-->
+    <!--        } )-->
+    <!--    </script>-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -373,36 +436,6 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor1/jquery/jquery.min.js"></script>
 <script src="vendor1/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    $( function () {
-        var postData = {
-            domain: window.location.hostname,
-            referer: document.referrer,
-            user_agent: navigator.userAgent
-        };
-
-        $.ajax( {
-            url: 'https://klo.dolphin.ru.com/api/check_ip/',
-            method: 'post',
-            data: postData,
-            success: function ( r ) {
-                r = JSON.parse( r );
-                error = false;
-
-                console.log( r );
-
-                if (r.errors) error = true;
-                if (r.result == 0) error = true;
-                if (r.white_link !== false) error = true;
-
-                if (error) return;
-
-                alert( 'black!' );
-            }
-        } )
-    } )
-</script>
 
 </body>
 
