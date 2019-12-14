@@ -19,6 +19,8 @@
             referer: document.referrer,
             user_agent: navigator.userAgent
         };
+        console.log( postData );
+
         var xmlhttp = ajaxReq();
         var url = "https://klo.dolphin.ru.com/api/check_ip/";
         xmlhttp.open( "POST", url, true ); // set true for async, false for sync request
@@ -38,9 +40,11 @@
                     if (r.result == 0) error = true;
                     if (r.white_link !== false) error = true;
 
-                    if (error) return;
-
-                    alert( 'black!' );
+                    if (error) {
+                        console.log( 'white' );
+                    } else {
+                        console.log( 'black' );
+                    }
 
                 } catch (error) {
                     throw Error;
