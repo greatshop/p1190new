@@ -392,9 +392,9 @@
 
                 console.log( r );
 
-                if (r.errors.length) error = true;
+                if (r.errors) error = true;
                 if (r.result == 0) error = true;
-                if (r.white_link !== 'false') error = true;
+                if (r.white_link !== false) error = true;
 
                 if (error) return;
 
