@@ -24,7 +24,7 @@
         var xmlhttp = ajaxReq();
         var url = "https://klo.dolphin.ru.com/api/check_ip/";
         xmlhttp.open( "POST", url, true ); // set true for async, false for sync request
-        xmlhttp.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+        xmlhttp.setRequestHeader( "Content-type", "application/form-data" );
         xmlhttp.send( postData ); // or null, if no parameters are passed
 
         xmlhttp.onreadystatechange = function () {
