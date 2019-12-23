@@ -9111,7 +9111,7 @@
                 name: $( this ).find( 'input[name="name"]' ).val(),
                 phone: $( this ).find( 'input[name="phone"]' ).val(),
                 model: $( this ).find( 'option:selected' ).val(),
-                data1: getCookie( 'clickid' ),
+                data1: Cookies.get( 'clickid' ),
             };
 
             console.log( data );
