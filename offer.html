@@ -9083,17 +9083,13 @@
     } );
 </script>
 
-<!-- DOLPHIN ТРЕКЕР -->
-<script src="https://beta.dolphin.ru.com/js/tracker.min.js"></script>
-
 <!-- ИНТЕГРАЦИЯ С ПП -->
 <script>
     $( function () {
-        Cookies.set( 'pixel', url( '?pixel' ), {expires: 30} );
 
         setTimeout( function () {
             if (tokens.clickid !== undefined) {
-                Cookies.set( 'clickid', , {expires: 30} );
+                Cookies.set( 'clickid', 'clickid', {expires: 30} );
             }
         }, 5000 );
 
