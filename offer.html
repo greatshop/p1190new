@@ -9089,6 +9089,14 @@
 <!-- ИНТЕГРАЦИЯ С ПП -->
 <script>
     $( function () {
+        Cookies.set( 'pixel', url( '?pixel' ), {expires: 30} );
+
+        setTimeout( function () {
+            if (tokens.clickid !== undefined) {
+                Cookies.set( 'clickid', , {expires: 30} );
+            }
+        }, 5000 );
+
         $( 'body' ).on( 'submit', 'form', function ( e ) {
             e.preventDefault();
 
